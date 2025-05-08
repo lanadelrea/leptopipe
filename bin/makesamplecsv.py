@@ -23,23 +23,36 @@ def get_filepaths_samplename(directory):
     """
 
     file_paths = [] # List where to store the file paths
-    sample_name = [] # List where to store the sample names
 
     for root, directories, files in os.walk(directory):
         for filename in files:
-            if filename.endswith(".fastq"): # Only the fastq files
+            if filename.endswith(".fastq.gz"): # Only the fastq files
                 filepath = os.path.join(root, filename) # Get the absolute path
                 file_paths.append(filepath) # Write the absolute paths in the list
 
+    return file_paths
+
+file_paths = get_filepaths(sampledir)
+
+print(file_paths)
+
+def get_samplename(directory)
+    """
+    This function will list the sample names from the filename
+    """
+
+    sample_name = [] # List where to store the sample names
+
+    for files in os.walk(directory):
+        for filename in files:
+            if filename.endswith("fastq.gz"):
                 pattern = re.compile(r"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)", re.IGNORECASE) # Get the name pattern
                 sample = pattern.match(filename) # Match the pattern to the filename
                 sample_name.append(sample)
 
-    return file_paths, sample
+    return sample_name
 
-file_paths_sample_name = get_filepaths_samplename(sampledir)
-
-print(file_paths_sample_name)
+samples = get_samplename(sampledir)
 
 # Create dataframe of the list of filepaths
 #df = pd.DataFrame({'paths':full_file_paths})
