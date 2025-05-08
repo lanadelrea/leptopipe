@@ -36,7 +36,7 @@ file_paths = get_filepaths(sampledir)
 
 print(file_paths)
 
-def get_samplename(directory)
+def get_samplename(directory):
     """
     This function will list the sample names from the filename
     """
@@ -45,7 +45,7 @@ def get_samplename(directory)
 
     for files in os.walk(directory):
         for filename in files:
-            if filename.endswith("fastq.gz"):
+            if filename.endswith("fastq.gz")
                 pattern = re.compile(r"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)", re.IGNORECASE) # Get the name pattern
                 sample = pattern.match(filename) # Match the pattern to the filename
                 sample_name.append(sample)
