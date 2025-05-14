@@ -44,7 +44,7 @@ def get_samplename(directory):
     sample_name = [] # List where to store the sample names
 
     for files in glob.glob(directory):
-                filename = os.path.split(files)[-1]
+                filename = os.path.basename(files)
                 pattern = re.compile(r"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)", re.IGNORECASE) # Get the name pattern
                 sample = pattern.match(filename) # Match the pattern to the filename
                 sample_name.append(sample)
