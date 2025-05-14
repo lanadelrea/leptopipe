@@ -15,7 +15,7 @@ if not os.path.isabs(sampledir):
     sampledir = os.path.abspath(sampledir)
 
 # Get the list of files in the input directory
-def get_filepaths_samplename(directory):
+def get_filepaths(directory):
     """
     This function will get the absolute path
     of the samples in the input directory
@@ -43,9 +43,8 @@ def get_samplename(directory):
 
     sample_name = [] # List where to store the sample names
 
-    for files in os.walk(directory):
-        for filename in files:
-            if filename.endswith("fastq.gz")
+    for files in glob.glob(directory):
+                filename = os.path.split(f)[-1]
                 pattern = re.compile(r"([A-Za-z0-9]+(-[A-Za-z0-9]+)+)", re.IGNORECASE) # Get the name pattern
                 sample = pattern.match(filename) # Match the pattern to the filename
                 sample_name.append(sample)
